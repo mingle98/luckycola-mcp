@@ -33,8 +33,8 @@ export LUCKYCOLA_OPEN_UID="你账户在LuckyCola平台的uid"
 
 ### 获取API密钥和UID
 
-1. 访问 [LuckyCola官网-个人中心](https://luckycola.com.cn/)
-2. 登录后进入"个人中心"页面，获取APPKey和用户ID(uid)
+1. 访问 [LuckyCola官网-用户中心](https://luckycola.com.cn/)
+2. 登录后进入"用户中心"页面，获取APPKey和用户ID(uid)
 3. 确保账号已相关API权限及额度
 
 ## 使用方法
