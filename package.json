@@ -1,0 +1,30 @@
+{
+  "name": "luckycola-mcp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "luckycola-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "test": "node test.js",
+    "start": "node build/index.js",
+    "inspector": "sudo npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": ["mcp", "luckycola", "ai", "image-check", "image-ocr"],
+  "author": "",
+  "license": "ISC",
+  "description": "LuckyCola的开放MCP服务",
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.0",
+    "zod": "^3.23.8"
+  }
+} 
