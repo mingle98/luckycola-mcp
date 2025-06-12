@@ -1,6 +1,6 @@
 # LuckyCola MCP 服务
 
-基于LuckyCola开放开放能力的MCP（Model Context Protocol）服务。
+基于LuckyCola开放能力的MCP（Model Context Protocol）服务。
 
 ## 功能特性
 
