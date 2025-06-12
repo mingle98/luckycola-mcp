@@ -49,6 +49,25 @@ node build/index.js
 
 在MCP客户端（如Claude Desktop、Cursor等）中配置此服务：
 
+**npx方式使用**
+```json
+{
+  "mcpServers": {
+    "luckycola-mcp": {
+      "command": "npx",
+      "args": ["-y", "luckycola-mcp"],
+      "env": {
+        "LUCKYCOLA_OPEN_KEY": "你的APPKey",
+        "LUCKYCOLA_OPEN_UID": "你的UID"
+      }
+    }
+  }
+}
+```
+
+或
+
+**下载到本地使用**
 ```json
 {
   "mcpServers": {
