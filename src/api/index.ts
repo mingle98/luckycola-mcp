@@ -6,5 +6,9 @@ export const apis = {
     getFoodMenu: {
         url: 'https://luckycola.com.cn/food/getFoodMenu',
         method: 'POST'
+    },
+    imageOcr: {
+        url: 'https://luckycola.com.cn/openOcr/baseOCR',
+        method: 'POST'
     }
 }

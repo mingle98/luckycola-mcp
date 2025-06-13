@@ -49,3 +49,17 @@ export interface GetFoodMenuResResult {
     msg: string;
     data: GetFoodMenuResult;
 }
+
+
+// 图片OCR
+export interface imageOCRResult {
+  code: number;
+  msg: string;
+  content: string;
+}
+
+export interface imageOCRResResult {
+  code: number;
+  msg: string;
+  data: imageOCRResult;
+}

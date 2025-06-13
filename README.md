@@ -29,7 +29,10 @@ yarn build
 ```bash
 export LUCKYCOLA_OPEN_KEY="你账户在LuckyCola平台的APPKey"
 export LUCKYCOLA_OPEN_UID="你账户在LuckyCola平台的uid"
+export MCP_FILE_PATH="希望进行文件操作(文件修改、删除、重命名等)的目录路径"
 ```
+
+nodejs版本要求：v21.0.0及以上
 
 ### 获取API密钥和UID
 
@@ -154,6 +157,92 @@ await callTool("getFoodMenu", { foodTitle: "番茄炒蛋" });
 
 ---
 
+## 文件操作工具（fileOperation）
+
+**重要说明:** 使用文件操作工具前，建议先对AI说"请对MCP_FILE_PATH目录下的文件接下的任务"，以确保AI明确操作目录。
+
+fileOperation工具支持对MCP_FILE_PATH目录下的文件进行多种操作，包括：删除、重命名、读取、写入、列出文件、JSON与Excel互转、图片压缩、图片OCR识别等。每种操作均有对应参数和典型场景，详见下表和案例。
+
+### 操作类型与参数说明
+
+| 操作类型(operation)      | 说明                         | 主要参数                | 典型场景与提示词示例 |
+|--------------------------|------------------------------|-------------------------|----------------------|
+| delete                   | 删除指定文件                 | filename                | 删除test.txt文件：<br>"请删除test.txt文件"|
+| rename                   | 重命名文件                   | filename, newFilename   | 文件重命名：<br>"请把a.docx重命名为b.docx"|
+| read                     | 读取文件内容（支持docx纯文本）| filename                | 读取内容：<br>"请读取test.txt的内容"<br>"请读取word文档a.docx内容"|
+| write                    | 写入/追加内容到文件（支持docx）| filename, content, mode | 覆盖写入：<br>"请将'你好世界'写入test.txt"<br>追加写入：<br>"请在test.txt追加'再见'"|
+| list                     | 列出目录下文件（可只列文件）  | onlyFiles               | 查看文件列表：<br>"请列出目录下所有文件"<br>"只列出普通文件"|
+| json2xlsx                | JSON转Excel（.xlsx）         | filename, content       | "请将以下JSON内容保存为excel文件data.xlsx：{...}"|
+| xlsx2json                | Excel转JSON                  | filename, newFilename   | "请将data.xlsx转换为JSON文件"|
+| compressImage            | 图片压缩（支持jpg/png/gif）  | filename, quality, output| "请压缩图片a.png，质量80，输出为a_compressed.png"|
+| ocrToImageBase64         | 图片OCR识别（jpg/png，≤2M）  | filename                | "请识别图片a.jpg中的文字"|
+
+#### 详细参数说明
+- `filename`：要操作的文件名（相对于MCP_FILE_PATH）
+- `newFilename`：新文件名（重命名/转换时用）
+- `content`：写入内容或json2xlsx的JSON字符串
+- `mode`：写入模式，`append`为追加，`overwrite`为覆盖，默认覆盖
+- `onlyFiles`：list操作时是否只列普通文件，默认false
+- `quality`：图片压缩质量，1-100，默认80
+- `output`：压缩后输出文件名，默认在原文件名后加_compressed
+
+### 使用案例与推荐提示词
+
+#### 1. 删除文件
+```
+请删除test.txt文件
+```
+
+#### 2. 重命名文件
+```
+请把a.docx重命名为b.docx
+```
+
+#### 3. 读取文件内容
+```
+请读取test.txt的内容
+请读取word文档a.docx内容
+```
+
+#### 4. 写入/追加内容到文件
+```
+请将"你好世界"写入test.txt
+请在test.txt追加"再见"
+```
+
+#### 5. 列出目录下文件
+```
+请列出目录下所有文件
+只列出普通文件
+```
+
+#### 6. JSON转Excel
+```
+请将以下JSON内容保存为excel文件data.xlsx：[{"姓名":"张三","年龄":18},{"姓名":"李四","年龄":20}]
+```
+
+#### 7. Excel转JSON
+```
+请将data.xlsx转换为JSON文件
+```
+
+#### 8. 图片压缩
+```
+请压缩图片a.png，质量80，输出为a_compressed.png
+```
+
+#### 9. 图片OCR识别
+```
+请识别图片a.jpg中的文字
+```
+
+> **注意事项：**
+> - 文件操作均在MCP_FILE_PATH指定目录下进行，确保有读写权限。
+> - 图片OCR仅支持jpg/png格式且文件≤2M。
+> - 图片压缩支持jpg/png/gif，gif为动图时会自动处理色彩数。
+> - Excel/Word操作请确保文件扩展名正确（.xlsx/.docx）。
+> - 若遇权限错误，请参考下方"故障排除"章节。
+
 ## 项目结构
 
 ```
@@ -173,7 +262,6 @@ luckycola-mcp/
 │   └── index.ts            # 入口文件
 ├── package.json
 ├── tsconfig.json
-├── yarn.lock
 ├── LICENSE
 └── README.md
 ```
