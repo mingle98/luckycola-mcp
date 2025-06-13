@@ -32,7 +32,7 @@ yarn build
 ```bash
 export LUCKYCOLA_OPEN_KEY="你账户在LuckyCola平台的APPKey"
 export LUCKYCOLA_OPEN_UID="你账户在LuckyCola平台的uid"
-export MCP_FILE_PATH="希望进行文件/图片操作(文件修改、删除、重命名等)的目录路径"
+export MCP_FILE_PATH="希望进行文件/图片操作的目录路径,例如: /Users/yourname/Desktop/testDir"
 ```
 
 nodejs版本要求：v21.0.0及以上
@@ -65,7 +65,7 @@ node build/index.js
       "env": {
         "LUCKYCOLA_OPEN_KEY": "你的APPKey",
         "LUCKYCOLA_OPEN_UID": "你的UID",
-        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径"
+        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径,例如: /Users/yourname/Desktop/testDir"
       }
     }
   }
@@ -84,7 +84,7 @@ node build/index.js
       "env": {
         "LUCKYCOLA_OPEN_KEY": "你的APPKey",
         "LUCKYCOLA_OPEN_UID": "你的UID",
-        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径"
+        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径,例如: /Users/yourname/Desktop/testDir"
       }
     }
   }
