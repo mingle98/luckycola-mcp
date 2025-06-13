@@ -8,6 +8,9 @@
 - 环境变量配置，安全便捷
 - 在线图片合规性检查，确保内容安全
 - 菜谱查询工具，获取菜品制作方法
+- 丰富的文件操作功能，支持文件修改、删除、重命名等
+- 图片压缩功能，优化图片大小
+- 图片OCR功能,轻松获取图片中的文字信息
 
 ## 安装依赖
 
@@ -29,7 +32,7 @@ yarn build
 ```bash
 export LUCKYCOLA_OPEN_KEY="你账户在LuckyCola平台的APPKey"
 export LUCKYCOLA_OPEN_UID="你账户在LuckyCola平台的uid"
-export MCP_FILE_PATH="希望进行文件操作(文件修改、删除、重命名等)的目录路径"
+export MCP_FILE_PATH="希望进行文件/图片操作(文件修改、删除、重命名等)的目录路径"
 ```
 
 nodejs版本要求：v21.0.0及以上
@@ -61,7 +64,8 @@ node build/index.js
       "args": ["-y", "luckycola-mcp"],
       "env": {
         "LUCKYCOLA_OPEN_KEY": "你的APPKey",
-        "LUCKYCOLA_OPEN_UID": "你的UID"
+        "LUCKYCOLA_OPEN_UID": "你的UID",
+        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径"
       }
     }
   }
@@ -79,7 +83,8 @@ node build/index.js
       "args": ["/path/to/luckycola-mcp/build/index.js"],
       "env": {
         "LUCKYCOLA_OPEN_KEY": "你的APPKey",
-        "LUCKYCOLA_OPEN_UID": "你的UID"
+        "LUCKYCOLA_OPEN_UID": "你的UID",
+        "MCP_FILE_PATH": "希望进行文件/图片操作的目录路径"
       }
     }
   }
