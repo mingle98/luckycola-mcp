@@ -164,7 +164,7 @@ await callTool("getFoodMenu", { foodTitle: "番茄炒蛋" });
 
 ## 文件操作工具（fileOperation）
 
-**重要说明:** 使用文件操作工具前，建议先对AI说"请对MCP_FILE_PATH目录下的文件接下的任务"，以确保AI明确操作目录。
+**重要说明:** 使用文件操作工具前，建议先对AI说【"请对MCP_FILE_PATH目录下的文件进行接下来的任务"】，以确保AI明确操作目录。
 
 fileOperation工具支持对MCP_FILE_PATH目录下的文件进行多种操作，包括：删除、重命名、读取、写入、列出文件、JSON与Excel互转、图片压缩、图片OCR识别等。每种操作均有对应参数和典型场景，详见下表和案例。
 
